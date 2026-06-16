@@ -1,0 +1,372 @@
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║  PANDUAN UPDATE PORTOFOLIO — BACA INI DULU                  ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  Portofolio ini diperbarui melalui GOOGLE SHEETS.           ║
+║  Kamu tidak perlu buka GitHub atau sentuh kode apapun!      ║
+║                                                              ║
+║  CARA UPDATE KONTEN WEBSITE:                                 ║
+║  1. Buka Google Sheets portofoliomu                          ║
+║  2. Edit isi sel yang ingin diubah                           ║
+║  3. Simpan (otomatis tersimpan di Google Sheets)             ║
+║  4. Refresh website — perubahan langsung tampil!             ║
+║                                                              ║
+║  CARA SETUP AWAL (sekali saja):                              ║
+║  1. Buka Google Sheet → File → Share →                       ║
+║     "Publish to web" → pilih "Entire Document" →            ║
+║     Format "Web page" → klik Publish                         ║
+║  2. Salin ID sheet dari URL browser kamu                     ║
+║     (bagian panjang antara /d/ dan /edit)                    ║
+║  3. Buka file config.js → tempel ID di dalam tanda kutip     ║
+║  4. Upload index.html dan config.js ke GitHub sekali         ║
+║  5. Aktifkan GitHub Pages → selesai selamanya!               ║
+║                                                              ║
+║  Setelah itu, update website = update Google Sheets saja. ✅ ║
+╚══════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Puspa - Mahasiswi Akuntansi UNDIP</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Portofolio akademik dan profesional Lucah Sabrina Puspa Ratih, mahasiswi Akuntansi Universitas Diponegoro. Think in Numbers, Write with Emotion, and Dream Without Limits.">
+  <meta property="og:title" content="Portofolio Sabrina - Mahasiswi Akuntansi UNDIP">
+  <meta property="og:description"
+    content="Menampilkan data pencapaian, keahlian, dan perjalanan akademik Sabrina dalam bidang Akuntansi dan Keuangan.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts Import -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background Nebula Atmosphere -->
+  <div class="nebula-1"></div>
+  <div class="nebula-2"></div>
+  <div class="nebula-3"></div>
+
+  <!-- Loading State Overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="pulse-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <p class="loader-text">Memuat portofolio...</p>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification">
+    Menampilkan data offline. Perbarui Google Sheet untuk memuat data terbaru.
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" id="nav-logo">LSPR</a>
+
+      <nav class="nav-links">
+        <a href="#tentang" class="nav-link">Tentang</a>
+        <a href="#keahlian" class="nav-link">Keahlian</a>
+        <a href="#pencapaian" class="nav-link">Pencapaian</a>
+        <a href="#pengalaman" class="nav-link">Pengalaman</a>
+        <a href="#kontak" class="nav-link">Kontak</a>
+        <a href="#" id="nav-linkedin-link" class="nav-linkedin-btn" target="_blank" aria-label="LinkedIn Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </nav>
+
+      <button class="nav-toggle" id="menu-btn" aria-label="Toggle Mobile Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-links">
+      <a href="#tentang" class="mobile-link">Tentang</a>
+      <a href="#keahlian" class="mobile-link">Keahlian</a>
+      <a href="#pencapaian" class="mobile-link">Pencapaian</a>
+      <a href="#pengalaman" class="mobile-link">Pengalaman</a>
+      <a href="#kontak" class="mobile-link">Kontak</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="container hero-content">
+        <div class="hero-eyebrow font-mono" id="hero-identity-label">Mahasiswi Akuntansi · Universitas Diponegoro · Semester 2</div>
+
+        <div class="hero-tagline">
+          <span class="tagline-think">Think in Numbers,</span>
+          <span class="tagline-write">Write with Emotion,</span>
+          <span class="tagline-dream">Dream Without Limits</span>
+        </div>
+
+        <div class="hero-name" id="hero-name">Lucah Sabrina Puspa Ratih</div>
+        <p class="hero-bio" id="hero-bio">Loading bio...</p>
+
+        <div class="stat-chips-container" id="stat-chips-container">
+          <div class="stat-chip">
+            <span class="value" id="stat-semester">3</span>
+            <span class="label">Semester</span>
+          </div>
+          <div class="stat-chip">
+            <span class="value" id="stat-skills">14+</span>
+            <span class="label">Keahlian</span>
+          </div>
+          <div class="stat-chip">
+            <span class="value" id="stat-achievements">5+</span>
+            <span class="label">Pencapaian</span>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#keahlian" class="btn btn-primary">Lihat Portofolio Saya</a>
+          <a href="#" id="hero-linkedin-btn" class="btn btn-secondary" target="_blank">LinkedIn →</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- TENTANG SAYA SECTION -->
+    <section id="tentang">
+      <div class="container">
+        <div class="tentang-grid">
+          <!-- Left Column -->
+          <div class="tentang-left">
+            <span class="section-eyebrow">Tentang Saya</span>
+            <h2 class="section-heading font-display">Saya percaya angka punya cerita.</h2>
+            <div class="bio-text" id="tentang-bio">
+              Loading bio...
+            </div>
+            <div class="value-tags">
+              <span class="value-tag">Analitis</span>
+              <span class="value-tag">Berorientasi Detail</span>
+              <span class="value-tag">Growth Mindset</span>
+            </div>
+          </div>
+          <!-- Right Column -->
+          <div class="tentang-right">
+            <div class="card identity-card">
+              <div class="identity-row">
+                <span class="identity-label">Universitas</span>
+                <span class="identity-value" id="identitas-univ">Universitas Diponegoro</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Fakultas</span>
+                <span class="identity-value" id="identitas-fakultas">Fakultas Ekonomika dan Bisnis</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Program Studi</span>
+                <span class="identity-value" id="identitas-major">S1 Akuntansi</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Semester</span>
+                <span class="identity-value font-mono" id="identitas-semester">Semester 2</span>
+              </div>
+            </div>
+
+            <div class="email-copy-wrapper">
+              <button onclick="copyEmail()" class="email-copy-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span id="identitas-email">lucahsabrina@students.undip.ac.id</span>
+                <span id="copy-tooltip" class="copy-tooltip">Salin Email</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- KEAHLIAN SECTION -->
+    <section id="keahlian" class="reveal">
+      <div class="container">
+        <span class="section-eyebrow">Keahlian</span>
+        <h2 class="section-heading font-display">Keahlian & Kompetensi</h2>
+
+        <div class="keahlian-grid">
+          <!-- Hard Skills Card -->
+          <div class="card keahlian-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              Hard Skills
+            </h3>
+            <div class="chips-container" id="hard-skills-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
+          <!-- Soft Skills Card -->
+          <div class="card keahlian-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+              </svg>
+              Soft Skills
+            </h3>
+            <div class="chips-container" id="soft-skills-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PENCAPAIAN & SERTIFIKAT SECTION -->
+    <section id="pencapaian" class="reveal">
+      <div class="container">
+        <span class="section-eyebrow">Pencapaian & Sertifikat</span>
+        <h2 class="section-heading font-display">Pencapaian & Sertifikat</h2>
+
+        <div class="pencapaian-grid">
+          <!-- Left Column: Prestasi -->
+          <div class="pencapaian-column">
+            <h3>🏆 Prestasi</h3>
+            <div class="cards-list" id="prestasi-list">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
+          <!-- Right Column: Sertifikat -->
+          <div class="pencapaian-column">
+            <h3>📜 Sertifikat</h3>
+            <div class="cards-list" id="sertifikat-list">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- PENGALAMAN SECTION -->
+    <section id="pengalaman" class="reveal">
+      <div class="container">
+        <div style="text-align: center;">
+          <span class="section-eyebrow">Pengalaman</span>
+          <h2 class="section-heading font-display">Perjalanan & Keterlibatan</h2>
+        </div>
+
+        <div class="pengalaman-container" id="experience-container">
+          <!-- Dynamically Populated -->
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- KONTAK SECTION -->
+    <section id="kontak" class="reveal">
+      <div class="container">
+        <div class="card-featured kontak-card">
+          <div class="kontak-content">
+            <h2 class="kontak-heading font-display">Mari Berkenalan</h2>
+            <p class="kontak-subtitle">Terbuka untuk diskusi akademik, kolaborasi, dan pertukaran ide seputar akuntansi
+              dan keuangan.</p>
+
+            <div class="kontak-details">
+              <div class="kontak-detail-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span id="kontak-email">lucahsabrina@students.undip.ac.id</span>
+              </div>
+              <div class="kontak-detail-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                </svg>
+                <span id="kontak-univ">Universitas Diponegoro</span>
+              </div>
+              <div class="kontak-detail-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span id="kontak-location">Semarang, Jawa Tengah</span>
+              </div>
+            </div>
+
+            <a href="#" id="kontak-linkedin-btn" class="kontak-linkedin-btn" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              Hubungi Saya di LinkedIn
+            </a>
+
+            <div class="kontak-divider"></div>
+
+            <a href="#" id="kontak-github-link" class="kontak-github-link" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              GitHub Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-name" id="footer-name">Lucah Sabrina Puspa Ratih</div>
+      <div class="footer-sub" id="footer-sub">S1 Akuntansi · Universitas Diponegoro · Semarang</div>
+      <div class="footer-copy">© 2025 · Dibuat dengan ☕ dan semangat belajar</div>
+    </div>
+  </footer>
+
+  <!-- LOAD CONFIGURATION FILE -->
+  <script src="config.js"></script>
+
+  <!-- WEBSITE INTERACTION & DATA FETCHER -->
+  <script src="script.js" defer></script>
+</body>
+
+</html>
