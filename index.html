@@ -2050,35 +2050,61 @@
 
       // Update titles
       document.title = `Portofolio ${nickname} - Mahasiswi ${major} ${university}`;
+      
       const navLogo = document.getElementById('nav-logo');
       if (navLogo) navLogo.innerText = nickname;
 
       const footerName = document.querySelector('.footer-name');
       if (footerName) footerName.innerText = iden.name || 'Lucah Sabrina Puspa Ratih';
+      
       const footerSub = document.querySelector('.footer-sub');
       if (footerSub) footerSub.innerText = `${major} · ${university} · ${iden.location || 'Semarang'}`;
 
       // 1. Hero Content
-      document.getElementById('hero-identity-label').innerText = `${major.toUpperCase()} · ${university.toUpperCase()}`;
-      document.getElementById('hero-name').innerText = iden.name || '';
+      const heroIdLabel = document.getElementById('hero-identity-label');
+      if (heroIdLabel) heroIdLabel.innerText = `${major.toUpperCase()} · ${university.toUpperCase()}`;
+      
+      const heroName = document.getElementById('hero-name');
+      if (heroName) heroName.innerText = iden.name || '';
       
       const heroSub = document.getElementById('hero-sub');
       if (heroSub) heroSub.innerText = iden.headline || '';
 
       const semesterDigit = semester.replace(/\D/g, "");
-      document.getElementById('stat-semester').innerText = semesterDigit || '1';
-      document.getElementById('stat-skills').innerText = (data.skills.length || 14) + '+';
+      const statSem = document.getElementById('stat-semester');
+      if (statSem) statSem.innerText = semesterDigit || '1';
+      
+      const statSkills = document.getElementById('stat-skills');
+      if (statSkills) statSkills.innerText = (data.skills.length || 14) + '+';
 
       const prestasisCount = data.achievements.filter(a => (a.type || '').toLowerCase() === 'prestasi').length;
-      document.getElementById('stat-achievements').innerText = (prestasisCount || 2) + '+';
+      const statAch = document.getElementById('stat-achievements');
+      if (statAch) statAch.innerText = (prestasisCount || 2) + '+';
 
       // 2. Tentang Saya
-      document.getElementById('tentang-bio').innerText = iden.bio || '';
-      document.getElementById('identitas-univ').innerText = university;
-      document.getElementById('identitas-fakultas').innerText = iden.faculty || '';
-      document.getElementById('identitas-major').innerText = major;
-      document.getElementById('identitas-semester').innerText = semester;
-      document.getElementById('identitas-email').innerText = iden.email || '';
+      const tentangBio = document.getElementById('tentang-bio');
+      if (tentangBio) tentangBio.innerText = iden.bio || '';
+      
+      const idenUniv = document.getElementById('identitas-univ');
+      if (idenUniv) idenUniv.innerText = university;
+      
+      const idenFakultas = document.getElementById('identitas-fakultas');
+      if (idenFakultas) idenFakultas.innerText = iden.faculty || '';
+      
+      const idenMajor = document.getElementById('identitas-major');
+      if (idenMajor) idenMajor.innerText = major;
+      
+      const idenSem = document.getElementById('identitas-semester');
+      if (idenSem) idenSem.innerText = semester;
+      
+      const idenEmail = document.getElementById('identitas-email');
+      if (idenEmail) idenEmail.innerText = iden.email || '';
+
+      const idenAsal = document.getElementById('identitas-asal');
+      if (idenAsal) idenAsal.innerText = iden.hometown || '';
+
+      const idenOrg = document.getElementById('identitas-organisasi');
+      if (idenOrg) idenOrg.innerText = iden.organization || iden.organisasi || 'Financial Director, Z Foundation';
 
       const kontakLocation = document.querySelector('#kontak-location');
       if (kontakLocation) kontakLocation.innerHTML = `${iden.location || 'Semarang, Jawa Tengah'} (merantau dari ${iden.hometown || 'Jember'})`;
@@ -2087,9 +2113,14 @@
       const linkedinObj = data.social.find(s => s && s.platform && s.platform.toLowerCase() === 'linkedin');
       const linkedinUrl = linkedinObj ? linkedinObj.url : 'https://www.linkedin.com/in/lspusparatih/';
 
-      document.getElementById('nav-linkedin-link').setAttribute('href', linkedinUrl);
-      document.getElementById('hero-linkedin-btn').setAttribute('href', linkedinUrl);
-      document.querySelector('.kontak-linkedin-btn').setAttribute('href', linkedinUrl);
+      const navLi = document.getElementById('nav-linkedin-link');
+      if (navLi) navLi.setAttribute('href', linkedinUrl);
+      
+      const heroLi = document.getElementById('hero-linkedin-btn');
+      if (heroLi) heroLi.setAttribute('href', linkedinUrl);
+      
+      const kontakLi = document.querySelector('.kontak-linkedin-btn');
+      if (kontakLi) kontakLi.setAttribute('href', linkedinUrl);
 
       const footerLink = document.querySelector('.footer-link');
       if (footerLink) footerLink.setAttribute('href', linkedinUrl);
@@ -2108,77 +2139,83 @@
       // 4. Skills Rendering
       const hardSkillsCont = document.getElementById('hard-skills-container');
       const softSkillsCont = document.getElementById('soft-skills-container');
-      hardSkillsCont.innerHTML = '';
-      softSkillsCont.innerHTML = '';
+      if (hardSkillsCont && softSkillsCont) {
+        hardSkillsCont.innerHTML = '';
+        softSkillsCont.innerHTML = '';
 
-      const chartIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chip-icon"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`;
-      const sparkleIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chip-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>`;
+        const chartIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chip-icon"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`;
+        const sparkleIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chip-icon"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>`;
 
-      data.skills.forEach(skill => {
-        const chip = document.createElement('span');
-        const isHard = (skill.category || '').toLowerCase() === 'hard';
-        chip.className = isHard ? 'chip-hard' : 'chip-soft';
-        chip.innerHTML = `${isHard ? chartIcon : sparkleIcon}${skill.name || ''}`;
+        data.skills.forEach(skill => {
+          const chip = document.createElement('span');
+          const isHard = (skill.category || '').toLowerCase() === 'hard';
+          chip.className = isHard ? 'chip-hard' : 'chip-soft';
+          chip.innerHTML = `${isHard ? chartIcon : sparkleIcon}${skill.name || ''}`;
 
-        if (isHard) {
-          hardSkillsCont.appendChild(chip);
-        } else {
-          softSkillsCont.appendChild(chip);
-        }
-      });
+          if (isHard) {
+            hardSkillsCont.appendChild(chip);
+          } else {
+            softSkillsCont.appendChild(chip);
+          }
+        });
+      }
 
       // 5. Achievements & Certificates Rendering
       const prestasiCont = document.getElementById('prestasi-list');
       const sertifikatCont = document.getElementById('sertifikat-list');
-      prestasiCont.innerHTML = '';
-      sertifikatCont.innerHTML = '';
+      if (prestasiCont && sertifikatCont) {
+        prestasiCont.innerHTML = '';
+        sertifikatCont.innerHTML = '';
 
-      data.achievements.forEach(ach => {
-        const card = document.createElement('article');
-        const isPrestasi = (ach.type || '').toLowerCase() === 'prestasi';
-        card.className = isPrestasi ? 'card-achievement reveal' : 'card-cert reveal';
+        data.achievements.forEach(ach => {
+          const card = document.createElement('article');
+          const isPrestasi = (ach.type || '').toLowerCase() === 'prestasi';
+          card.className = isPrestasi ? 'card-achievement reveal' : 'card-cert reveal';
 
-        const hasImage = ach.image && ach.image.trim() !== "" && ach.image !== "#";
-        if (hasImage) {
-          card.classList.add('has-preview');
-          card.addEventListener('click', () => {
-            openImageModal(ach.image, ach.title, ach.issuer);
-          });
-        }
+          const hasImage = ach.image && ach.image.trim() !== "" && ach.image !== "#";
+          if (hasImage) {
+            card.classList.add('has-preview');
+            card.addEventListener('click', () => {
+              openImageModal(ach.image, ach.title, ach.issuer);
+            });
+          }
 
-        card.innerHTML = `
-          <span class="year">${ach.year}</span>
-          <h4 class="title">${ach.title}</h4>
-          <p class="issuer">${ach.issuer}</p>
-          <p class="desc">${ach.description || ''}</p>
-        `;
+          card.innerHTML = `
+            <span class="year">${ach.year}</span>
+            <h4 class="title">${ach.title}</h4>
+            <p class="issuer">${ach.issuer}</p>
+            <p class="desc">${ach.description || ''}</p>
+          `;
 
-        if (isPrestasi) {
-          prestasiCont.appendChild(card);
-        } else {
-          sertifikatCont.appendChild(card);
-        }
-      });
+          if (isPrestasi) {
+            prestasiCont.appendChild(card);
+          } else {
+            sertifikatCont.appendChild(card);
+          }
+        });
+      }
 
       // 6. Experience Timeline Rendering
       const expCont = document.getElementById('experience-container');
-      expCont.innerHTML = '';
+      if (expCont) {
+        expCont.innerHTML = '';
 
-      data.experience.forEach(exp => {
-        const item = document.createElement('article');
-        item.className = 'card-experience reveal';
-        item.innerHTML = `
-          <div class="year-col">${exp.year}</div>
-          <div class="divider"></div>
-          <div class="content-col">
-            <h4 class="title">${exp.title}</h4>
-            <div class="role">${exp.role}</div>
-            <div class="org">${exp.org || ''}</div>
-            <p class="desc">${exp.description || ''}</p>
-          </div>
-        `;
-        expCont.appendChild(item);
-      });
+        data.experience.forEach(exp => {
+          const item = document.createElement('article');
+          item.className = 'card-experience reveal';
+          item.innerHTML = `
+            <div class="year-col">${exp.year}</div>
+            <div class="divider"></div>
+            <div class="content-col">
+              <h4 class="title">${exp.title}</h4>
+              <div class="role">${exp.role}</div>
+              <div class="org">${exp.org || ''}</div>
+              <p class="desc">${exp.description || ''}</p>
+            </div>
+          `;
+          expCont.appendChild(item);
+        });
+      }
 
       initScrollAnimations();
     }
